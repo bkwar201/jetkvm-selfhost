@@ -20,8 +20,9 @@ To allow users to log in, you need a free Google Cloud project:
 2. Create a **"Testing App"** under the OAuth consent screen.
 3. Go to **Credentials** -> **Create Credentials** -> **OAuth Client ID**.
 4. Select **Web Application**.
-5. **Authorized redirect URIs**: Add `https://your-api-domain.com/auth/google/callback`.
-6. Copy your `Client ID` and `Client Secret`.
+5. **Authorized JavaScript origins**: Add `https://your-ui-domain.com` and `https://your-api-domain.com`
+6. **Authorized redirect URIs**: Add `https://your-api-domain.com/oidc/callback`, `https://your-api-domain.com/oidc/callback_o`, `https://your-api-domain.com/oidc/google`.
+7. Copy your `Client ID` and `Client Secret`.
 
 ### 2. Environment Setup
 Edit two files in the root directory: `env-ui` and `env-api`.
@@ -43,11 +44,11 @@ GOOGLE_CLIENT_SECRET=your_secret
 
 # URLs
 API_HOSTNAME=https://your-api-domain.com
-APP_HOSTNAME=https://your-app-domain.com
+APP_HOSTNAME=https://your-ui-domain.com
 
 # Storage & Security
 COOKIE_SECRET=ChangeThisToSomethingSecureAndLong
-CORS_ORIGINS=https://your-app-domain.com
+CORS_ORIGINS=https://your-ui-domain.com
 
 # Reverse Proxy Header
 # =X-Real-IP for Nginx
@@ -58,14 +59,14 @@ REAL_IP_HEADER=X-Real-IP
 
 ## Deployment
 
-The provided deploy.sh script does next:
-1. Cleans up the old builds.
+The provided deploy.sh script does the following:
+1. Cleans up old builds.
 2. Clones the latest stable versions of jetkvm/kvm and jetkvm/cloud-api.
-3. Copies UI Dockerfile and your .env files.
+3. Copies UI Dockerfile and your .env files to cloned local repos.
 4. Spins up the entire stack using Docker Compose.
 
-#### To deploy:
-```shell
+### To deploy:
+```sh
 git clone https://github.com/Cheblan/jetkvm-selfhost.git
 cd jetkvm-selfhost
 chmod +x deploy.sh
@@ -74,5 +75,5 @@ chmod +x deploy.sh
 
 ## To be done
 
-1. Add self-hosted coturn TURN server deployment [once support for them is merged in API](https://github.com/jetkvm/cloud-api/pull/53)
-2. Add description on email allowlist [once it's merged in main](https://github.com/jetkvm/cloud-api/commit/8596c72b29403f99418ddb893a332f1d7ce94432)
+1. Add self-hosted coturn TURN server deployment once support is merged in the API: [https://github.com/jetkvm/cloud-api/pull/53](https://github.com/jetkvm/cloud-api/pull/53)
+2. Add description on email allowlist once it's merged in main: [https://github.com/jetkvm/cloud-api/commit/8596c72b29403f99418ddb893a332f1d7ce94432](https://github.com/jetkvm/cloud-api/commit/8596c72b29403f99418ddb893a332f1d7ce94432)

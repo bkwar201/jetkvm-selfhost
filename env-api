@@ -10,8 +10,8 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
 # Fill this with your desired URLs in https://example.com format
-API_HOSTNAME=
-APP_HOSTNAME=
+API_HOSTNAME=https://jet-api.domain.com
+APP_HOSTNAME=https://jet-ui.domain.com
 
 ###
 ### Cloudflare TURN Service
@@ -38,8 +38,12 @@ R2_CDN_URL=
 CORS_ORIGINS=
 
 ### Real IP Header for the reverse proxy (e.g. X-Real-IP), leave empty if not needed
+### **If using NPM change to X-Forwarded-For
 REAL_IP_HEADER=X-Real-IP
 
 ### ICE Servers for WebRTC, split by comma (e.g. stun:stun.l.google.com:19302,stun:stun1.l.google.com:19302)
 # No need to fill it now, app defaults to these 2 example google stun servers and as for today there's no way to use self hosted TURN servers
 ICE_SERVERS=
+
+#added via Copilot suggestion/tshooting
+CLOUD_URL=https://jet-ui.domain.com

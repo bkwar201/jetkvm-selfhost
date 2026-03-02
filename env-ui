@@ -3,4 +3,5 @@
 ### We use this for all the cloud API requests from the browser
 
 # Fill this with your desired api URL in https://example.com format
-VITE_CLOUD_API=
+VITE_CLOUD_API=!This is your API domain
+VITE_CLOUD_URL=!This is your UI domain
